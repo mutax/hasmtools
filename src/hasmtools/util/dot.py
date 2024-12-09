@@ -18,6 +18,14 @@ def json2graph(fsm: JsonFSM) -> pydot.Dot:
             graph.add_node(pydot.Node(state, label=state, shape="circle"))
 
         for label, dest in edges.items():
+            if label == "timeout" and isinstance(dest, dict):
+                t = dest.get("after")
+                real_label = f"{t=}"
+                real_dest = dest.get("to")
+                graph.add_edge(
+                    pydot.Edge(state, real_dest, label=real_label, dir="forward", len=6.00, color='red')
+                )
+                continue
             graph.add_edge(
                 pydot.Edge(state, dest, label=label, dir="forward", len=5.00)
             )

@@ -64,6 +64,40 @@ Note that in yaml the first state is the default/initial state.
 
 ![State Machine rendered as png](https://github.com/mutax/hasmtools/raw/main/example.png)
 
+## An example with timeouts
+
+source: https://github.com/edalquist/ha_state_machine/blob/main/example.json
+
+```json
+{
+  "state": {
+    "status": "IDLE"
+  },
+  "transitions": {
+    "IDLE": {
+      "above": "STARTING"
+    },
+    "STARTING": {
+      "timeout": { "after": 6, "to": "RUNNING" },
+      "below": "IDLE"
+    },
+    "RUNNING": {
+      "below": "STOPPING"
+    },
+    "STOPPING": {
+      "timeout": { "after": 15, "to": "DONE" },
+      "above": "RUNNING",
+      "middle": "RUNNING"
+    },
+    "DONE": {
+      "timeout": { "after": 15, "to": "IDLE" }
+    }
+  }
+}
+```
+
+![FSM with timeouts](https://github.com/mutax/hasmtools/raw/main/timeouts.png)
+
 
 
 # Status
