@@ -8,6 +8,7 @@ authors = [
     { name = "Florian Streibelt", email = "mail+github@yakshaving.de"},
 ]
 description = "Visualize Home Assistant Finite State Machines"
+readme = "README.md"
 requires-python = ">=3.11"
 keywords = ["HomeAssistant", "FSM"]
 license = {text = "Apache-2.0"}
@@ -16,7 +17,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
 ]
 
-dynamic = ["version", "readme", "dependencies"]
+dynamic = ["version", "dependencies"]
 
 [project.scripts]
 hasmtool = "hasmtools.cli:cli"

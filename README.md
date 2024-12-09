@@ -62,7 +62,7 @@ Note that in yaml the first state is the default/initial state.
  $ hasmtool example.json example.png
 ```
 
-![FSM example](example.png)
+![State Machine rendered as png](https://github.com/mutax/hasmtools/raw/main/example.png)
 
 
 
