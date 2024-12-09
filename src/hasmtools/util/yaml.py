@@ -8,7 +8,7 @@ from .types import YamlFSM, JsonFSM
 def yaml2json(fsm_yaml: YamlFSM) -> JsonFSM:
     first = True
     ret = {"transitions": {}}
-    for state, edges in sorted(fsm_yaml.items()):
+    for state, edges in fsm_yaml.items():
         if first:
             first = False
             ret["state"] = {"status": state}
@@ -27,7 +27,7 @@ def json2yaml(fsm: JsonFSM) -> YamlFSM:
     ret[initial] = fsm["transitions"][initial]
 
     # now all the others:
-    for state, edges in sorted(fsm["transitions"].items()):
+    for state, edges in fsm["transitions"].items():
         if state == initial:
             continue
         else:

@@ -15,4 +15,4 @@ def load_json(infile: pathlib.Path) -> JsonFSM:
 
 def write_json(fsm: JsonFSM, outfile: pathlib.Path):
     with open(outfile, "w") as f:
-        f.write(json.dumps(fsm, sort_keys=True, indent=4))
+        f.write(json.dumps(fsm, sort_keys=False, indent=4))
